@@ -24,6 +24,7 @@ const eachURL = (url) => {
 // Exports.
 export default {
     plugins: {
+        // Do NOT remove this as it will break Parcel HTML entry points.
         'posthtml-urls': {
             eachURL,
             filter: FILTER_OPTIONS
