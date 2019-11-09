@@ -23,6 +23,14 @@ export default (eleventyConfig) => {
         server: false
     });
 
+    // Parcel needs any linter configuration.
+    eleventyConfig.addPassthroughCopy(joinPath(INPUT_DIRECTORY, '.*rc*'));
+
+    // Manual passthrough file copy.
+    // @see https://www.11ty.io/docs/copy/
+    eleventyConfig.addPassthroughCopy(joinPath(INPUT_DIRECTORY, '**/*.{js,scss,txt}'));
+    eleventyConfig.addPassthroughCopy(joinPath(INPUT_DIRECTORY, '**/*.{gif,jpeg,jpg,png,svg,webp}'));
+
     // Return configuration options.
     // @see https://www.11ty.io/docs/config/
     return {
