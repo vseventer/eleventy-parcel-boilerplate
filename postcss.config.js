@@ -18,6 +18,11 @@ const INPUT_DIRECTORY = config.input;
 // const OUTPUT_DIRECTORY = config.output;
 const PRODUCTION = process.env.NODE_ENV === 'production';
 
+// @see https://www.11ty.io/docs/languages/
+const ELEVENTY_TEMPLATE_LANGUAGES = [
+    'html', 'md', '11ty.js', 'liquid', 'njk', 'hbs', 'mustache', 'ejs', 'haml', 'pug', 'jstl'
+].join(',');
+
 // Helpers.
 const isTruthy = x => !!x;
 
@@ -26,7 +31,8 @@ export default {
     plugins: [
         stylelint(),
         PRODUCTION && purgecss({
-            content: [ joinPath(INPUT_DIRECTORY, '**/*.njk') ],
+            // Purge using templates rather than the full output.
+            content: [ joinPath(INPUT_DIRECTORY, `**/*.{${ELEVENTY_TEMPLATE_LANGUAGES}}`) ],
             fontFace: true,
             keyframes: true
         }),
