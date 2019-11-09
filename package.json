@@ -5,7 +5,7 @@
   "author": "Mark van Seventer <mark@vseventer.com>",
   "license": "MIT",
   "browserslist": "defaults",
-  "homepage": "/",
+  "homepage": "http://localhost:8080",
   "config": {
     "input": "src/",
     "intermediate": "tmp/",
@@ -18,7 +18,7 @@
     "prebabel": "eslint '*.js'",
     "babel": "run-p 'babel:* -- --plugins add-module-exports'",
 
-    "11ty": "cross-env eleventy --input=$npm_package_config_input --output=$npm_package_config_intermediate",
+    "11ty": "cross-env eleventy --input=$npm_package_config_input --output=$npm_package_config_intermediate --passthroughall",
     "parcel:build": "cross-env parcel build $npm_package_config_intermediate'*.html' -d $npm_package_config_output  --experimental-scope-hoisting --no-autoinstall --no-source-maps --public-url $npm_package_homepage",
     "preparcel:watch": "cross-env wait-on $npm_package_config_intermediate",
     "parcel:watch": "cross-env parcel serve $npm_package_config_intermediate'*.html' -d $npm_package_config_output --no-autoinstall",
