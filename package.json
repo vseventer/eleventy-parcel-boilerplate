@@ -5,6 +5,7 @@
   "author": "Mark van Seventer <mark@vseventer.com>",
   "license": "MIT",
   "browserslist": "defaults",
+  "homepage": "/",
   "config": {
     "input": "src/",
     "intermediate": "tmp/",
@@ -13,15 +14,16 @@
   "scripts": {
     "babel:11ty": "babel eleventy.config.js -o .eleventy.js -s inline",
     "babel:parcel": "babel postcss.config.js -o .postcssrc.js -s inline",
+    "babel:posthtml": "babel posthtml.config.js -o .posthtmlrc.js -s inline",
     "prebabel": "eslint '*.js'",
     "babel": "run-p 'babel:* -- --plugins add-module-exports'",
 
     "11ty": "cross-env eleventy --input=$npm_package_config_input --output=$npm_package_config_intermediate",
-    "parcel:build": "cross-env parcel build $npm_package_config_intermediate'**/*.html' -d $npm_package_config_output --no-autoinstall --no-source-maps",
+    "parcel:build": "cross-env parcel build $npm_package_config_intermediate'*.html' -d $npm_package_config_output  --experimental-scope-hoisting --no-autoinstall --no-source-maps --public-url $npm_package_homepage",
     "preparcel:watch": "cross-env wait-on $npm_package_config_intermediate",
-    "parcel:watch": "cross-env parcel serve $npm_package_config_intermediate'**/*.html' -d $npm_package_config_output --no-autoinstall",
+    "parcel:watch": "cross-env parcel serve $npm_package_config_intermediate'*.html' -d $npm_package_config_output --no-autoinstall",
 
-    "clean": "cross-env rimraf .eleventy.js .postcssrc.js $npm_package_config_intermediate $npm_package_config_output",
+    "clean": "cross-env rimraf .*.js $npm_package_config_intermediate $npm_package_config_output",
 
     "watch:11ty": "run-s '11ty -- --serve --watch'",
     "watch:parcel": "run-s parcel:watch",
@@ -32,6 +34,7 @@
     "build": "run-s 11ty parcel:build",
 
     "postinstall": "run-s babel",
+
     "start": "run-s watch",
 
     "forestry:preview": "run-p '11ty -- --watch' 'parcel:watch -- --host 0.0.0.0 --port 8080'"
@@ -39,9 +42,9 @@
   "dependencies": {},
   "devDependencies": {
     "@11ty/eleventy": "^0.9.0",
-    "@babel/cli": "^7.6.4",
-    "@babel/core": "^7.6.4",
-    "@babel/preset-env": "^7.6.3",
+    "@babel/cli": "7.7.0",
+    "@babel/core": "7.7.2",
+    "@babel/preset-env": "7.7.1",
     "@fullhuman/postcss-purgecss": "^1.3.0",
     "autoprefixer": "^9.7.0",
     "babel-plugin-add-module-exports": "^1.0.2",
@@ -50,7 +53,9 @@
     "npm-run-all": "^4.1.5",
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-eslint": "^1.0.8-2",
+    "parcel-plugin-strip-index-html": "^0.1.2",
     "postcss-reporter": "^6.0.1",
+    "posthtml-urls": "^1.0.0",
     "rimraf": "^3.0.0",
     "sass": "^1.23.1",
     "stylelint": "^11.1.1",

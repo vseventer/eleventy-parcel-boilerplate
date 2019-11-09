@@ -4,3 +4,4 @@ public/
 tmp/
 .eleventy.js
 .postcssrc.js
+.posthtmlrc.js

@@ -13,7 +13,9 @@ import stylelint from 'stylelint';
 import { config } from './package.json';
 
 // Constants.
-const INTERMEDIATE_DIRECTORY = config.intermediate;
+const INPUT_DIRECTORY = config.input;
+// const INTERMEDIATE_DIRECTORY = config.intermediate;
+// const OUTPUT_DIRECTORY = config.output;
 const PRODUCTION = process.env.NODE_ENV === 'production';
 
 // Helpers.
@@ -24,9 +26,11 @@ export default {
     plugins: [
         stylelint(),
         PRODUCTION && purgecss({
-            content: [ joinPath(INTERMEDIATE_DIRECTORY, '**/*.html') ]
+            content: [ joinPath(INPUT_DIRECTORY, '**/*.njk') ],
+            fontFace: true,
+            keyframes: true
         }),
         autoprefixer(),
-        reporter()
+        reporter({ clearReportedMessages: true })
     ].filter(isTruthy)
 };
