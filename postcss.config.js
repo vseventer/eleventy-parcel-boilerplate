@@ -27,7 +27,7 @@ const ELEVENTY_TEMPLATE_LANGUAGES = [
 const isTruthy = x => !!x;
 
 // Exports.
-export default {
+module.exports = {
     plugins: [
         stylelint(),
         PRODUCTION && purgecss({

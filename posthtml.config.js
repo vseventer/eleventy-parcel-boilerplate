@@ -22,7 +22,7 @@ const eachURL = (url) => {
 };
 
 // Exports.
-export default {
+module.exports = {
     plugins: {
         // Do NOT remove this as it will break Parcel HTML entry points.
         'posthtml-urls': {
