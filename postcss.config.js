@@ -20,23 +20,23 @@ const PRODUCTION = process.env.NODE_ENV === 'production';
 
 // @see https://www.11ty.io/docs/languages/
 const ELEVENTY_TEMPLATE_LANGUAGES = [
-    'html', 'md', '11ty.js', 'liquid', 'njk', 'hbs', 'mustache', 'ejs', 'haml', 'pug', 'jstl'
+  'html', 'md', '11ty.js', 'liquid', 'njk', 'hbs', 'mustache', 'ejs', 'haml', 'pug', 'jstl'
 ].join(',');
 
 // Helpers.
-const isTruthy = x => !!x;
+const isTruthy = (x) => !!x;
 
 // Exports.
 module.exports = {
-    plugins: [
-        stylelint(),
-        PRODUCTION && purgecss({
-            // Purge using templates rather than the full output.
-            content: [ joinPath(INPUT_DIRECTORY, `**/*.{${ELEVENTY_TEMPLATE_LANGUAGES}}`) ],
-            fontFace: true,
-            keyframes: true
-        }),
-        autoprefixer(),
-        reporter({ clearReportedMessages: true })
-    ].filter(isTruthy)
+  plugins: [
+    stylelint(),
+    PRODUCTION && purgecss({
+      // Purge using templates rather than the full output.
+      content: [joinPath(INPUT_DIRECTORY, `**/*.{${ELEVENTY_TEMPLATE_LANGUAGES}}`)],
+      fontFace: true,
+      keyframes: true
+    }),
+    autoprefixer(),
+    reporter({ clearReportedMessages: true })
+  ].filter(isTruthy)
 };

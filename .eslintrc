@@ -1,14 +1,8 @@
 {
-    "root": true,
-    "env": {
-        "browser": true,
-        "es6": true,
-        "node": true
-    },
-    "parserOptions": {
-        "sourceType": "module"
-    },
-    "extends": "eslint:recommended",
-    "parser": "babel-eslint",
-    "rules": { }
+  "root": true,
+  "extends": "airbnb-base",
+  "parser": "babel-eslint",
+  "rules": {
+    "comma-dangle": ["error", "never"]
+  }
 }

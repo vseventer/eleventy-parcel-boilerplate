@@ -1,8 +1,12 @@
 {
-    "env": {
-        "node": false
-    },
-    "globals": {
-        "process": "readonly"
-    }
+  "env": {
+    "browser": true,
+    "node": false
+  },
+  "globals": {
+    "process": "readonly"
+  },
+  "rules": {
+    "no-console": "error"
+  }
 }
