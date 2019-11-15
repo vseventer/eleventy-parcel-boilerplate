@@ -1822,9 +1822,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000887, caniuse-lite@^1.0.30001004, caniuse-lite@^1.0.30001006:
-  version "1.0.30001009"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001009.tgz#69b77997b882a7aee6af24c8d7d2fa27ee41f348"
-  integrity sha512-M3rEqHN6SaVjgo4bIik7HsGcWXsi+lI9WA0p51RPMFx5gXfduyOXWJrc0R4xBkSK1pgNf4CNgy5M+6H+WiEP8g==
+  version "1.0.30001010"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001010.tgz#397a14034d384260453cc81994f494626d34b938"
+  integrity sha512-RA5GH9YjFNea4ZQszdWgh2SC+dpLiRAg4VDQS2b5JRI45OxmbGrYocYHTa9x0bKMQUE7uvHkNPNffUr+pCxSGw==
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -6141,10 +6141,13 @@ parcel-plugin-eslint@^1.0.8-2:
     eslint-friendly-formatter "^4.0.1"
     jsonfile "^5.0.0"
 
-parcel-plugin-strip-index-html@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/parcel-plugin-strip-index-html/-/parcel-plugin-strip-index-html-0.1.2.tgz#a6c5229cd5f515f4696c6f696a4ece4ed5065be8"
-  integrity sha512-YXMpid6wcMiCgY/gFr2QAvt2jAcQMsK+HVHSc0TL2nrxkeRVFhAEPkcMNGVWPOd+10KmmQRC+9DcvA/O0aOA1w==
+parcel-plugin-remove-index-html@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/parcel-plugin-remove-index-html/-/parcel-plugin-remove-index-html-0.1.0.tgz#cbd6df998fe39bed7f7146e906f82413f395e598"
+  integrity sha512-bYGNCAD1f3Bqmv+RcYulOJhLXwg5tBSlox8AgGcx7Ore4SRUpwEOglUSxjLE7E0MCeTjVKsf8YWvhcjVKzoMEw==
+  dependencies:
+    debug "^4.1.1"
+    posthtml "^0.12.0"
 
 parent-module@^1.0.0:
   version "1.0.1"

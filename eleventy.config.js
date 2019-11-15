@@ -14,15 +14,22 @@ import NunjucksLinkExtension from './lib/nunjucks/tags/link';
 // Constants.
 const INPUT_DIRECTORY = config.input;
 // const INTERMEDIATE_DIRECTORY = config.intermediate;
-// const OUTPUT_DIRECTORY = config.output;
+const OUTPUT_DIRECTORY = config.output;
+const STAGING = process.env.NODE_ENV === 'staging';
 
 // Exports.
 module.exports = (eleventyConfig) => {
-  // Proxy to Parcel development server.
   // @see https://www.11ty.io/docs/config/#override-browsersync-server-options
   eleventyConfig.setBrowserSyncConfig({
-    proxy: { target: 'localhost:1234', ws: true },
-    server: false
+    // Configure server to use Parcel output.
+    server: OUTPUT_DIRECTORY,
+
+    // Enable Instant Previews in Forestry.
+    // @see https://forestry.io/docs/previews/instant-previews/
+    ...STAGING && {
+      host: '0.0.0.0',
+      ui: false
+    }
   });
 
   // Parcel needs any linter configuration.
