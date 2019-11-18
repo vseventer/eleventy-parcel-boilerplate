@@ -37,7 +37,7 @@
     "postcss-reporter": "^6.0.1",
     "posthtml-urls": "^1.0.0",
     "sass": "^1.23.1",
-    "stylelint": "^11.1.1",
+    "stylelint": "12",
     "stylelint-config-recommended-scss": "^4.0.0",
     "stylelint-no-unsupported-browser-features": "4.0.0",
     "stylelint-scss": "3.12.1"
@@ -57,6 +57,7 @@
     "npm-run-all": "^4.1.5",
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-eslint": "^1.0.8-2",
+    "parcel-plugin-keep-asset-folders": "^0.1.0",
     "parcel-plugin-remove-index-html": "^0.1.0",
     "rimraf": "^3.0.0",
     "wait-on": "^3.3.0"
