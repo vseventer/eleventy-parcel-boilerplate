@@ -6202,10 +6202,10 @@ parcel-plugin-eslint@^1.0.8-2:
     eslint-friendly-formatter "^4.0.1"
     jsonfile "^5.0.0"
 
-parcel-plugin-keep-asset-folders@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/parcel-plugin-keep-asset-folders/-/parcel-plugin-keep-asset-folders-0.1.0.tgz#e6c36f6d7f1f07cb38d5dab1bb3a382e709f122c"
-  integrity sha512-WcL0wbqUquCoRXwVCPI0zgTPO45dZdB2v+dwdrZ/DT5UYTVUEmK7K/U61v5GiigP6PHOqfEsQmjmnJ5Clpa2iA==
+parcel-plugin-keep-asset-folders@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/parcel-plugin-keep-asset-folders/-/parcel-plugin-keep-asset-folders-0.1.1.tgz#e9f2b8280314800ebb1c476f779e9d0770d8966e"
+  integrity sha512-4Q1Ll/VmxHibgcA1KzAJMs1rBxhsdgNAAKiYg6NBy13hUXUrtsICcVM/RSOK2snlvVYRnSJR5NL5+/wlEjOkLg==
   dependencies:
     debug "^4.1.1"
 
