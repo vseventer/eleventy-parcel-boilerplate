@@ -2,6 +2,10 @@
 
 // Standard lib.
 import {
+  existsSync,
+  readFileSync
+} from 'fs';
+import {
   join as joinPath,
   relative as relativePath
 } from 'path';
@@ -21,6 +25,23 @@ const STAGING = process.env.NODE_ENV === 'staging';
 module.exports = (eleventyConfig) => {
   // @see https://www.11ty.io/docs/config/#override-browsersync-server-options
   eleventyConfig.setBrowserSyncConfig({
+    // Redirect to 404 page, like gh-pages.
+    // @see https://www.11ty.io/docs/quicktips/not-found/#with---serve
+    callbacks: {
+      ready: (err, bs) => {
+        // Read file inside middleware so live updates to the page reflect.
+        const notFoundPage = joinPath(OUTPUT_DIRECTORY, '404.html');
+        bs.addMiddleware('*', (req, res, next) => {
+          if (existsSync(notFoundPage)) {
+            res.statusCode = 404;
+            res.end(readFileSync(notFoundPage));
+          } else {
+            next();
+          }
+        });
+      }
+    },
+
     // Configure server to use Parcel output.
     server: OUTPUT_DIRECTORY,
 
