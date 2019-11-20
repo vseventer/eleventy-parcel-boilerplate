@@ -21,7 +21,7 @@ const PRODUCTION = process.env.NODE_ENV === 'production';
 // @see https://www.11ty.io/docs/languages/
 const ELEVENTY_TEMPLATE_LANGUAGES = [
   'html', 'md', '11ty.js', 'liquid', 'njk', 'hbs', 'mustache', 'ejs', 'haml', 'pug', 'jstl'
-].join(',');
+];
 
 // Helpers.
 const isTruthy = (x) => !!x;
