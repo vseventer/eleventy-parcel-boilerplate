@@ -58,7 +58,7 @@ module.exports = (eleventyConfig) => {
 
   // Manual passthrough file copy.
   // @see https://www.11ty.io/docs/copy/
-  eleventyConfig.addPassthroughCopy(joinPath(INPUT_DIRECTORY, '**/*.{js,scss,txt}'));
+  eleventyConfig.addPassthroughCopy(joinPath(INPUT_DIRECTORY, '**/*.{css,js,scss,txt}'));
   eleventyConfig.addPassthroughCopy(joinPath(INPUT_DIRECTORY, '**/*.{gif,jpeg,jpg,png,svg,webp}'));
 
   // Add universal filters.

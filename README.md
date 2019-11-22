@@ -1,43 +1,82 @@
 # eleventy-parcel-boilerplate
-> Starter kit for using [Eleventy][11ty] with [Parcel][parcel], backed by [Forestry][forestry].
+> Starter kit for using [Eleventy] with [Parcel], backed by [Forestry].
 
-[Eleventy][11ty] is an extremely powerful static site generator, but does not offer a built-in asset pipeline. This is where [Parcel][parcel] comes in: it bundles all assets of your web application, leaving you with a site that's ready for production!
+[Eleventy] is <cite>_a simpler static site generator_</cite>, which does a beautiful job of scaffolding your static site. However, a web application is so much more; what about images, stylesheets, or scripts? This is where [Parcel], a <cite>_zero configuration web application bundler_</cite>, comes in. By combining [Eleventy] with [Parcel], you can take your static site to the next level with minimal effort.
+
+As a bonus, this project is preconfigured to work out of the box with [Forestry], in case you use [Forestry] to edit your site content.
 
 ## Installation
+**Recommended**
+
+This project is set-up as a [Template Repository][1]. Click the "Use this template" button to create your new static site from this repository.
+
+**Others**
+
 1. Clone the repository using `git clone https://github.com/vseventer/eleventy-parcel-boilerplate`.
 2. Navigate to your project directory using `cd eleventy-parcel-boilerplate`.
 3. Install the dependencies using `npm install`.
 
 _This project supports both `npm` and `yarn`, feel free to use whichever package manager you're most comfortable with._
 
-## Features
-This project aims to be a boilerplate for your future [Eleventy][11ty] with [Parcel][parcel] project. It sets up your build pipeline, adds basic linting (JavaScript and SASS), and offers built-in CSS optimization ([PurgeCSS][purgecss] and [autoprefixer][autoprefixer]) using [PostCSS][postcss].
+## Getting Started
+Please familiarize yourself with [Eleventy] and [Parcel], and you will recognize the source directory contains all you need to get started with your new static site.
+
+By default, [Parcel] will pick-up any root-level [Eleventy] files. Typically, this would be your `index.html` and optionally `404.html` if you're deploying through GitHub Pages or similar. This project assumes all your other pages are referenced by your `index.html`, and will be picked up automatically.
+
+## Development
+* To start the development server, run `npm start` or `npm run watch` and navigate to `http://localhost:8080`.
+* To build your site just once (for production), run `npm run build`.
+
+_The development server, [browser-sync], is provided by [Eleventy] and set-up to work in sync with [Parcel]._
 
 ## Configuration
-This project predefines a set of configuration files, which can be tweaked depending on your preferences:
-* `package.json`: contains [browserslist][browserslist] configuration, and homepage, input, intermediate, and output directories of your site.
-* `.babelrc`: [Babel][babel] configuration.
-* `.eslintrc` and `src/.eslintrc`: [ESLint][eslint] configuration.
-* `.stylelintrc`: [stylelint][stylelint] configuration.
-* `eleventy.config.js`: [Eleventy][11ty] configuration in ES6 format.
-* `postcss.config.js`: [PostCSS][postcss] configuration in ES6 format.
-* `posthtml.config.js`: [PostHTML][posthtml] configuration in ES6 format.
+This project predefines a set of configuration files, which can be tweaked depending on your preferences.
 
-This project adds a number of dependencies required for [Eleventy][11ty] and [Parcel][parcel] to play together nicely. For example, the `posthtml-urls` dependencies is required to reset Eleventy's [Cool URIs][cool-uris] which prohibit Parcel from picking up some HTML entry points. Don't worry, the original URIs are restored in the final output using the `parcel-plugin-strip-index-html` dependency.
+### `package.json`
+The `browserslist` property reflects the browsers your static website supports, per [browserslist].
+
+The `homepage` property should reflect the URL of your production site. If you prefer to use absolute URLs, remove the `--public-url $npm_package_homepage` flag from the `parcel:build` npm script.
+
+The `config` block in `package.json` enumerates three directories:
+* `input`: the source of your web application.
+* `intermediate`: the output directory for [Eleventy], and input directory for [Parcel]. You should never directly modify contents in this directory.
+* `output`: the final build of your web application.
+
+### `.babelrc`
+The [Babel] smart preset is used allowing you to use the latest JavaScript. Two separate plugins supporting (private) class methods and properties are added by default as well.
+
+### `.eslintrc` and `src/.eslintrc`
+This project follows [Airbnb] configuration for [ESLint]. The source directory extends the base configuration, and makes sure you can use `process` in your JavaScript, as this is [supported][2] by [Parcel].
+
+Linting is ran on your configuration files, as well as the scripts in the source directory of your static site.
+
+### `.stylelintrc`
+This project follows the recommended configuration for [stylelint], with support for SCSS-syntax. Linting is ran as part of [PostCSS] as explained below.
+
+### `eleventy.config.js`
+The [Eleventy] configuration file adds support for running a staging environment, useful for [Forestry] integration. The development server is also updated to redirect 404 routes to your `404.html` page (if present in your project).
+
+In addition, it sets some sane defaults, as well as provide a boilerplate for how to add custom filters and tags. This project comes with two, a `debug` filter, and `link` custom Nunjucks tag.
+
+### `postcss.config.js`
+The [PostCSS] configuration adds a number of plugins. Your stylesheets are linted with [stylelint], before being optimized with [PurgeCSS] (production only), and [autoprefixer].
+
+### `posthtml.config.js`
+The [PostHTML] configuration adds a custom plugin to your pipeline, required to make [Eleventy] and [Parcel] play nice together. Do not remove this plugin unless you know what you are doing, or want your build to break.
+
+### Parcel
+[Parcel] does not have a separate configuration file, but does pick-up on packages named `parcel-plugin-*`. Included with this project are:
+* `parcel-plugin-eslint`: required to run linting before building with [Parcel].
+* `parcel-plugin-keep-asset-folders`: recommended if you want to keep your assets source directory structure rather than storing them all in the top-level output folder.
+* `parcel-plugin-remove-index-html`: highly recommended if you want your final build to have nice URLs (`https://example.com/` vs `https://example.com/index.html`).
 
 ## Content Management
 Content of your site lives in the `src/` directory by default.
 
-If you are using Forestry to manage your content, import your site by following the steps in the Forestry Dashboard. `eleventy-parcel-boilerplate` is set-up so that the [Instant Preview][preview] functionality of Forestry will work out of the box.
-
-## Development
-* To start the development server, run `npm start` and navigate to `http://localhost:8080`.
-* To build your site just once (for production), run `npm run build`.
-
-_The development server, [browser-sync][browser-sync], is provided by [Eleventy][11ty] and set-up to work in sync with [Parcel.js][parcel] development server. If you prefer to use the development server from [Parcel.js][parcel] directly, navigate to `http://localhost:1234`._
+If you are using [Forestry] to manage your content, import your site by following the steps in the [Forestry] Dashboard. This project is set-up so that the [Instant Preview][3] functionality of Forestry will work out of the box.
 
 ## Alternatives
-* [parceleventy][parceleventy]
+* [parceleventy] (not actively maintained)
 
 ## License
     The MIT License (MIT)
@@ -61,18 +100,20 @@ _The development server, [browser-sync][browser-sync], is provided by [Eleventy]
     IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-[11ty]: https://www.11ty.io/
+[eleventy]: https://www.11ty.io/
+[airbnb]: https://github.com/airbnb/javascript
 [autoprefixer]: https://github.com/postcss/autoprefixer
 [babel]: https://babeljs.io/
 [browser-sync]: https://www.browsersync.io/
 [browserslist]: https://github.com/browserslist/browserslist
-[cool-uris]: https://www.11ty.io/docs/permalinks/#cool-uris-don%E2%80%99t-change
 [eslint]: https://eslint.org/
 [forestry]: https://forestry.io/
 [parcel]: https://parceljs.org/
 [parceleventy]: https://github.com/chrisdmacrae/parceleventy
 [postcss]: https://postcss.org/
 [posthtml]: https://github.com/posthtml/posthtml
-[preview]: https://forestry.io/docs/previews/instant-previews/
 [purgecss]: https://www.purgecss.com/
 [stylelint]: https://stylelint.io/
+[1]: https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template
+[2]: https://parceljs.org/env.html
+[3]: https://forestry.io/docs/previews/instant-previews/
