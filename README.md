@@ -21,7 +21,7 @@ _This project supports both `npm` and `yarn`, feel free to use whichever package
 ## Getting Started
 Please familiarize yourself with [Eleventy] and [Parcel], and you will recognize the source directory contains all you need to get started with your new static site.
 
-By default, [Parcel] will pick-up any root-level [Eleventy] files. Typically, this would be your `index.html` and optionally `404.html` if you're deploying through GitHub Pages or similar. This project assumes all your other pages are referenced by your `index.html`, and will be picked up automatically.
+By default, [Parcel] will mark all files in your top-level source directory as entry points of your static site. Typically, these are your `index.html`, `404.html`, `robots.txt`, or `CNAME`. This project assumes all other pages of your static site are referenced by any of these entry points, and Parcel will pick them up automatically.
 
 ## Development
 * To start the development server, run `npm start` or `npm run watch` and navigate to `http://localhost:8080`.
