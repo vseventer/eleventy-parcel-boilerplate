@@ -9,15 +9,18 @@
   "config": {
     "input": "src/",
     "intermediate": "tmp/",
-    "output": "public/"
+    "output": "dist/browser/"
+  },
+  "targets": {
+    "browser": {}
   },
   "scripts": {
     "lint": "eslint '*.js' lib/",
 
     "11ty": "cross-env eleventy --config=./eleventy.config.js --input=$npm_package_config_input --output=$npm_package_config_intermediate",
-    "parcel:build": "cross-env parcel build $npm_package_config_intermediate'*' -d $npm_package_config_output --experimental-scope-hoisting --no-autoinstall --no-source-maps --public-url $npm_package_homepage",
+    "parcel:build": "cross-env parcel build $npm_package_config_intermediate'*.html' --no-autoinstall --no-source-maps",
     "preparcel:watch": "cross-env wait-on $npm_package_config_intermediate",
-    "parcel:watch": "cross-env parcel watch $npm_package_config_intermediate'*.html' -d $npm_package_config_output --no-autoinstall",
+    "parcel:watch": "cross-env parcel watch $npm_package_config_intermediate'*.html' --no-autoinstall",
 
     "clean": "cross-env rimraf $npm_package_config_intermediate $npm_package_config_output",
 
@@ -49,16 +52,14 @@
     "@babel/plugin-proposal-private-methods": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
     "@babel/register": "^7.7.4",
+    "@parcel/validator-eslint": "^2.0.0-alpha.3",
     "babel-eslint": "^10.0.3",
     "cross-env": "^6.0.3",
     "eslint": "6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "npm-run-all": "^4.1.5",
-    "parcel-bundler": "^1.12.4",
-    "parcel-plugin-eslint": "^1.0.8-2",
-    "parcel-plugin-keep-asset-folders": "^0.2.0",
-    "parcel-plugin-remove-index-html": "^0.1.0",
+    "parcel": "^2.0.0-alpha.3.2",
     "rimraf": "^3.0.0",
     "wait-on": "^3.3.0"
   },
