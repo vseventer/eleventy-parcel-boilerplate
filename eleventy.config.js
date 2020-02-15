@@ -2,10 +2,6 @@
 
 // Standard lib.
 import {
-  existsSync,
-  readFileSync
-} from 'fs';
-import {
   join as joinPath,
   relative as relativePath
 } from 'path';
@@ -18,41 +14,11 @@ import NunjucksLinkExtension from './lib/nunjucks/tags/link';
 // Constants.
 const INPUT_DIRECTORY = config.input;
 // const INTERMEDIATE_DIRECTORY = config.intermediate;
-const OUTPUT_DIRECTORY = config.output;
-const STAGING = process.env.NODE_ENV === 'staging';
+// const OUTPUT_DIRECTORY = config.output;
+// const STAGING = process.env.NODE_ENV === 'staging';
 
 // Exports.
 module.exports = (eleventyConfig) => {
-  // @see https://www.11ty.io/docs/config/#override-browsersync-server-options
-  eleventyConfig.setBrowserSyncConfig({
-    // Redirect to 404 page, like gh-pages.
-    // @see https://www.11ty.io/docs/quicktips/not-found/#with---serve
-    callbacks: {
-      ready: (err, bs) => {
-        // Read file inside middleware so live updates to the page reflect.
-        const notFoundPage = joinPath(OUTPUT_DIRECTORY, '404.html');
-        bs.addMiddleware('*', (req, res, next) => {
-          if (existsSync(notFoundPage)) {
-            res.statusCode = 404;
-            res.end(readFileSync(notFoundPage));
-          } else {
-            next();
-          }
-        });
-      }
-    },
-
-    // Configure server to use Parcel output.
-    server: OUTPUT_DIRECTORY,
-
-    // Enable Instant Previews in Forestry.
-    // @see https://forestry.io/docs/previews/instant-previews/
-    ...STAGING && {
-      host: '0.0.0.0',
-      ui: false
-    }
-  });
-
   // Add universal filters.
   // @see https://www.11ty.io/docs/filters/
   eleventyConfig.addFilter('debug', inspect);
