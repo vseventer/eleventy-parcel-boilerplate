@@ -22,16 +22,21 @@
   },
   "scripts": {
     "lint": "eslint '*.js' lib/ src/ --ignore-pattern src/scripts/",
+
     "11ty": "cross-env eleventy --config=./eleventy.config.js --input=$npm_package_config_input --output=$npm_package_config_intermediate",
     "parcel:build": "cross-env parcel build $npm_package_config_intermediate'*.*' --no-autoinstall --no-cache --no-source-maps",
     "parcel:watch": "cross-env parcel serve $npm_package_config_intermediate'*.*' --cache-dir $npm_package_config_cache --no-autoinstall",
+
     "clean": "cross-env rimraf $npm_package_config_cache $npm_package_config_intermediate $npm_package_config_output",
+
     "watch:11ty": "run-s '11ty -- --watch'",
     "watch:parcel": "run-s parcel:watch",
     "prewatch": "run-p clean lint",
     "watch": "run-p watch:*",
+
     "prebuild": "run-p clean lint",
     "build": "run-s 11ty parcel:build",
+
     "start": "run-s watch"
   },
   "dependencies": {
@@ -62,6 +67,7 @@
     "eslint-plugin-import": "^2.20",
     "npm-run-all": "^4.1",
     "parcel": "^2.0.0-alpha.3.2",
+    "parcel-optimizer-friendly-urls": "^0.1",
     "rimraf": "^3"
   },
   "engines": {
