@@ -16,7 +16,7 @@ import { config } from './package.json';
 const INPUT_DIRECTORY = config.input;
 // const INTERMEDIATE_DIRECTORY = config.intermediate;
 // const OUTPUT_DIRECTORY = config.output;
-const PRODUCTION = process.env.NODE_ENV === 'production';
+const PRODUCTION = process.env.TARGET_ENV === 'production';
 
 // @see https://www.11ty.io/docs/languages/
 const ELEVENTY_TEMPLATE_LANGUAGES = [
