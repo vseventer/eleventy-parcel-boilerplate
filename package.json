@@ -7,27 +7,21 @@
   "browserslist": "defaults",
   "homepage": "http://localhost:8080",
   "config": {
-    "cache": ".parcel-cache",
     "input": "src/",
     "intermediate": "tmp/",
-    "output": "dist/browser/"
+    "output": "dist/"
   },
   "targets": {
-    "browser": {
-      "publicUrl": "http://localhost:8080",
-      "sourceMap": {
-        "sourceRoot": "../../"
-      }
-    }
+    "browser": {}
   },
   "scripts": {
-    "lint": "eslint '*.js' lib/ src/ --ignore-pattern src/scripts/",
+    "lint": "cross-env eslint '*.js' lib/ $npm_package_config_input --ignore-pattern $npm_package_config_input'scripts/'",
 
     "11ty": "cross-env eleventy --config=./eleventy.config.js --input=$npm_package_config_input --output=$npm_package_config_intermediate",
-    "parcel:build": "cross-env parcel build $npm_package_config_intermediate'*.*' --no-autoinstall --no-cache --no-source-maps",
-    "parcel:watch": "cross-env parcel serve $npm_package_config_intermediate'*.*' --cache-dir $npm_package_config_cache --no-autoinstall",
+    "parcel:build": "cross-env parcel build $npm_package_config_intermediate'*.*' --dist-dir $npm_package_config_output --no-autoinstall --no-cache --no-source-maps --public-url $npm_package_homepage",
+    "parcel:watch": "cross-env parcel serve $npm_package_config_intermediate'*.*' --no-autoinstall",
 
-    "clean": "cross-env rimraf $npm_package_config_cache $npm_package_config_intermediate $npm_package_config_output",
+    "clean": "cross-env rimraf .parcel-cache/ $npm_package_config_intermediate $npm_package_config_output",
 
     "watch:11ty": "run-s '11ty -- --watch'",
     "watch:parcel": "run-s parcel:watch",
@@ -35,7 +29,7 @@
     "watch": "run-p watch:*",
 
     "prebuild": "run-p clean lint",
-    "build": "run-s 11ty parcel:build",
+    "build": "TARGET_ENV=production run-s 11ty parcel:build",
 
     "start": "run-s watch"
   },

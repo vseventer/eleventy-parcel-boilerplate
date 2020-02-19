@@ -15,7 +15,6 @@ import NunjucksLinkExtension from './lib/nunjucks/tags/link';
 const INPUT_DIRECTORY = config.input;
 // const INTERMEDIATE_DIRECTORY = config.intermediate;
 // const OUTPUT_DIRECTORY = config.output;
-// const STAGING = process.env.NODE_ENV === 'staging';
 
 // Exports.
 module.exports = (eleventyConfig) => {
@@ -26,6 +25,9 @@ module.exports = (eleventyConfig) => {
   // Add custom tags.
   // @see https://www.11ty.io/docs/shortcodes/
   eleventyConfig.addNunjucksTag('link', NunjucksLinkExtension.singleton);
+
+  // Copy static assets.
+  eleventyConfig.addPassthroughCopy(joinPath(INPUT_DIRECTORY, '*.txt'));
 
   // Return configuration options.
   // @see https://www.11ty.io/docs/config/

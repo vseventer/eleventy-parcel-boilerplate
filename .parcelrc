@@ -3,6 +3,9 @@
   "optimizers": {
     "*.html": ["parcel-optimizer-friendly-urls", "@parcel/optimizer-htmlnano"]
   },
+  "transforms": {
+    "*.txt": ["@parcel/transformer-raw"]
+  },
   "validators": {
     "*.js": ["@parcel/validator-eslint"]
   }
