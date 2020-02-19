@@ -1,8 +1,8 @@
 ---
 build:
   preview_env:
-  - NODE_ENV=staging
-  preview_output_directory: dist/browser
+  - TARGET_ENV=staging
+  preview_output_directory: dist/
   install_dependencies_command: npm install
   preview_docker_image: node:10
   mount_path: "/srv"
