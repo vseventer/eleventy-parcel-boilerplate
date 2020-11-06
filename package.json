@@ -60,7 +60,7 @@
     "eslint-config-airbnb-base": "^14",
     "eslint-plugin-import": "^2.20",
     "npm-run-all": "^4.1",
-    "parcel": "^2.0.0-alpha.3.2",
+    "parcel": "^2.0.0-beta.1",
     "parcel-optimizer-friendly-urls": "^0.1",
     "rimraf": "^3"
   },

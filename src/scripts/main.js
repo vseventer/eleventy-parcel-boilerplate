@@ -1,1 +1,1 @@
-console.log(process.env.TARGET_ENV); // eslint-disable-line no-console
+console.log(process.env.NODE_ENV); // eslint-disable-line no-console
