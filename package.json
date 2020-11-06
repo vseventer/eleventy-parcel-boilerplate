@@ -18,7 +18,7 @@
     "lint": "cross-env eslint '*.js' lib/ $npm_package_config_input --ignore-pattern $npm_package_config_input'scripts/'",
 
     "11ty": "cross-env eleventy --config=./eleventy.config.js --input=$npm_package_config_input --output=$npm_package_config_intermediate",
-    "parcel:build": "cross-env parcel build $npm_package_config_intermediate'*.*' --dist-dir $npm_package_config_output --no-autoinstall --no-cache --no-source-maps --public-url $npm_package_homepage",
+    "parcel:build": "cross-env parcel build $npm_package_config_intermediate'*.*' --dist-dir $npm_package_config_output --no-autoinstall --no-source-maps --public-url $npm_package_homepage",
     "parcel:watch": "cross-env parcel serve $npm_package_config_intermediate'*.*' --no-autoinstall",
 
     "clean": "cross-env rimraf .parcel-cache/ $npm_package_config_intermediate $npm_package_config_output",
@@ -61,6 +61,7 @@
     "eslint-plugin-import": "^2.20",
     "npm-run-all": "^4.1",
     "parcel": "^2.0.0-beta.1",
+    "parcel-namer-rewrite": "^2.0.0-beta.1-6",
     "parcel-optimizer-friendly-urls": "^0.1",
     "rimraf": "^3"
   },
@@ -68,5 +69,13 @@
     "node": "^10",
     "yarn": "^1"
   },
-  "private": true
+  "private": true,
+  "parcel-namer-rewrite": {
+    "rules": {
+      "^robots.*.txt$": "robots.txt",
+      "^(.*).css$": "styles/$1.css",
+      "^(.*).js$": "scripts/$1.js",
+      "^(.*).(gif|jpe?g|png)$": "images/$1.$2"
+    }
+  }
 }
