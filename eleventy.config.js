@@ -21,6 +21,12 @@ module.exports = (eleventyConfig) => {
   // Add universal filters.
   // @see https://www.11ty.io/docs/filters/
   eleventyConfig.addFilter('debug', inspect);
+  eleventyConfig.addFilter('pageURL', ({ outputPath, url }) => {
+    if (outputPath) {
+      return joinPath('/', outputPath);
+    }
+    return eleventyConfig.getFilter('url')(url);
+  });
 
   // Add custom tags.
   // @see https://www.11ty.io/docs/shortcodes/

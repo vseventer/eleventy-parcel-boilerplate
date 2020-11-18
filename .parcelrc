@@ -1,6 +1,5 @@
 {
   "extends": "@parcel/config-default",
-  "namers": ["parcel-namer-rewrite"],
   "optimizers": {
     "*.html": ["parcel-optimizer-friendly-urls", "..."]
   },

@@ -8,12 +8,13 @@
     <link href="{{- '~/src/styles/main.css' | url -}}" rel="stylesheet" />
 
     {% if not eleventyExcludeFromCollections %}
-      <link href="{{- page.url | url -}}" rel="canonical" />
+      <link href="{{- page | pageURL -}}" rel="canonical" />
     {% endif %}
   </head>
   <body>
     {{ content | safe }}
 
-    <script src="{{- '~/src/scripts/main.js' | url -}}"></script>
+    <script src="~/src/scripts/main.js" type="module"></script>
+    <script nomodule src="~/src/scripts/main.js"></script>
   </body>
 </html>
