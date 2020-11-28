@@ -7,14 +7,9 @@ import {
 } from 'path';
 
 // Local modules.
-import { config } from './package.json';
+import { INPUT_DIRECTORY } from './lib/constants';
 import inspect from './lib/filters';
 import NunjucksLinkExtension from './lib/nunjucks/tags/link';
-
-// Constants.
-const INPUT_DIRECTORY = config.input;
-// const INTERMEDIATE_DIRECTORY = config.intermediate;
-// const OUTPUT_DIRECTORY = config.output;
 
 // Exports.
 module.exports = (eleventyConfig) => {

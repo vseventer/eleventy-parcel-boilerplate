@@ -1,0 +1,13 @@
+{
+  "plugins": {
+    "stylelint": {},
+    "postcss-preset-env": {
+      "features": {
+        "custom-properties": { "preserve": true },
+        "nesting-rules": true
+      }
+    },
+    "tailwindcss": {},
+    "postcss-reporter": { "clearReportedMessages": true }
+  }
+}

@@ -11,6 +11,9 @@
     "intermediate": "tmp/",
     "output": "dist/"
   },
+  "sideEffects": [
+    "src/scripts/main.js"
+  ],
   "targets": {
     "browser": {}
   },
@@ -21,7 +24,7 @@
     "parcel:build": "cross-env parcel build $npm_package_config_intermediate'*.*' --dist-dir $npm_package_config_output --no-cache --no-source-maps --public-url $npm_package_homepage",
     "parcel:watch": "cross-env parcel serve $npm_package_config_intermediate'*.*' --no-autoinstall --no-content-hash",
 
-    "clean": "cross-env rimraf .parcel-cache/ $npm_package_config_intermediate $npm_package_config_output",
+    "clean": "cross-env rimraf $npm_package_config_intermediate $npm_package_config_output",
 
     "watch:11ty": "run-s '11ty -- --watch'",
     "watch:parcel": "run-s parcel:watch",
@@ -34,10 +37,11 @@
     "start": "run-s watch"
   },
   "dependencies": {
-    "@fullhuman/postcss-purgecss": "^3",
-    "autoprefixer": "^10",
+    "~": "file:.",
+    "postcss-preset-env": "^6.7",
     "postcss-reporter": "^7",
-    "stylelint": "^13.8"
+    "stylelint": "^13.8",
+    "tailwindcss": "^2"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.11",
@@ -48,23 +52,23 @@
     "@babel/preset-env": "^7.12",
     "@babel/register": "^7.12",
     "@babel/runtime-corejs3": "^7.12",
-    "@parcel/validator-eslint": "^2.0.0-nightly.459",
+    "@parcel/validator-eslint": "^2.0.0-nightly.464",
     "babel-eslint": "^10",
     "cross-env": "^7",
     "eslint": "^7.12",
     "eslint-config-airbnb-base": "^14.2",
     "eslint-plugin-import": "^2.20",
     "npm-run-all": "^4.1",
-    "parcel": "^2.0.0-nightly.457",
-    "parcel-namer-custom": "vseventer/parcel-namer-custom#v0.1.0",
-    "parcel-optimizer-friendly-urls": "^0.1",
+    "parcel": "^2.0.0-nightly.462",
+    "parcel-namer-custom": "0.1.0-2",
+    "parcel-optimizer-friendly-urls": "^0.2",
     "postcss": "^8.1",
     "rimraf": "^3",
     "stylelint-config-recommended": "^3",
     "stylelint-no-unsupported-browser-features": "^4.1"
   },
   "engines": {
-    "node": ">=10.21"
+    "node": ">=12"
   },
   "parcel-namer-custom": {
     ".css$": "[folder]/[name].[hash].[type]",
