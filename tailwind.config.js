@@ -6,13 +6,13 @@ import { join as joinPath } from 'path';
 // Local modules.
 import {
   INPUT_DIRECTORY,
-  PRODUCTION
+  PRODUCTION,
 } from './lib/constants';
 
 // Constants.
 // @see https://www.11ty.io/docs/languages/
 const ELEVENTY_TEMPLATE_LANGUAGES = [
-  'html', 'md', '11ty.js', 'liquid', 'njk', 'hbs', 'mustache', 'ejs', 'haml', 'pug', 'jstl'
+  'html', 'md', '11ty.js', 'liquid', 'njk', 'hbs', 'mustache', 'ejs', 'haml', 'pug', 'jstl',
 ];
 
 // Exports.
@@ -26,16 +26,16 @@ module.exports = {
       fontFace: true,
       keyframes: true,
       safelist: [],
-      variables: true
-    }
+      variables: true,
+    },
   },
 
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {}
+    extend: {},
   },
   variants: {
-    extend: {}
+    extend: {},
   },
-  plugins: []
+  plugins: [],
 };

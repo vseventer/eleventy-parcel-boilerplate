@@ -3,7 +3,7 @@
 // Standard lib.
 import {
   join as joinPath,
-  relative as relativePath
+  relative as relativePath,
 } from 'path';
 
 // Local modules.
@@ -35,10 +35,10 @@ module.exports = (eleventyConfig) => {
   return {
     // @see https://www.11ty.io/docs/config/#input-directory
     dir: {
-      layouts: relativePath(INPUT_DIRECTORY, joinPath(INPUT_DIRECTORY, '_layouts/'))
+      layouts: relativePath(INPUT_DIRECTORY, joinPath(INPUT_DIRECTORY, '_layouts/')),
     },
 
     // @see https://www.11ty.io/docs/config/#default-template-engine-for-markdown-files
-    markdownTemplateEngine: 'njk'
+    markdownTemplateEngine: 'njk',
   };
 };

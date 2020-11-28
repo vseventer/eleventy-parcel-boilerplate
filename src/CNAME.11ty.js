@@ -6,14 +6,13 @@ import { URL as NodeURL } from 'url';
 
 // Package modules.
 import {
-  config,
-  homepage
-} from '../package.json';
+  OUTPUT_DIRECTORY,
+  PRODUCTION,
+} from '~/lib/constants';
+import { homepage } from '~/package.json';
 
 // Constants.
-const OUTPUT_DIRECTORY = config.output;
 const CNAME_FILE = joinPath(OUTPUT_DIRECTORY, 'CNAME');
-const PRODUCTION = process.env.TARGET_ENV === 'production';
 
 // Exports.
 module.exports = class CNameRecord {
@@ -21,7 +20,7 @@ module.exports = class CNameRecord {
 
   data = {
     permalink: PRODUCTION && CNAME_FILE, // Enable only in production.
-    permalinkBypassOutputDir: true
+    permalinkBypassOutputDir: true,
   }
 
   constructor() {
