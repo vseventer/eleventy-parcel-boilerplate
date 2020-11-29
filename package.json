@@ -32,7 +32,7 @@
     "watch": "run-p watch:*",
 
     "prebuild": "run-p clean lint",
-    "build": "NODE_ENV=production run-s 11ty parcel:build",
+    "build": "BUILD_ENV=production run-s 11ty parcel:build",
 
     "start": "run-s watch"
   },
