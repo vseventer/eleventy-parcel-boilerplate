@@ -2,6 +2,6 @@
   "root": true,
   "extends": "airbnb-base",
   "parser": "babel-eslint",
-  "rules": {},
-  "reportUnusedDisableDirectives": true
+  "reportUnusedDisableDirectives": true,
+  "rules": {}
 }
