@@ -62,6 +62,7 @@
     "parcel": "^2.0.0-nightly.462",
     "parcel-namer-custom": "0.1.0-2",
     "parcel-optimizer-friendly-urls": "^0.2",
+    "parcel-optimizer-imagemin": "^0.1",
     "postcss": "^8.1",
     "rimraf": "^3",
     "sharp": "^0.26",
@@ -75,6 +76,13 @@
     ".css$": "[folder]/[name].[hash].[type]",
     ".jsx?$": "[folder]/[name].[hash].[type]",
     ".txt$": "[base]"
+  },
+  "parcel-optimizer-imagemin": {
+    "imagemin-pngquant": {
+      "quality": [0.6, 0.8],
+      "speed": 1,
+      "strip": true
+    }
   },
   "private": true
 }
