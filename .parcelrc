@@ -6,8 +6,8 @@
     "*.html": ["parcel-optimizer-friendly-urls", "..."]
   },
   "transformers": {
-    "*.{png,jpeg,jpg,webp}": ["@parcel/transformer-image", "..."],
-    "*.txt": ["@parcel/transformer-raw"],
+    "*.{gif,jpeg,jpg,png,svg,webp}": ["@parcel/transformer-raw"],
+    "*.txt": ["@parcel/transformer-raw"]
   },
   "validators": {
     "*.js": ["@parcel/validator-eslint"]

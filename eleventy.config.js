@@ -2,14 +2,32 @@
 
 // Standard lib.
 import {
+  basename,
+  extname,
   join as joinPath,
   relative as relativePath,
 } from 'path';
 
+// Package modules.
+import EleventyImage from '@11ty/eleventy-img';
+
 // Local modules.
-import { INPUT_DIRECTORY } from './lib/constants';
+import {
+  INPUT_DIRECTORY,
+  INTERMEDIATE_DIRECTORY,
+} from './lib/constants';
 import inspect from './lib/filters';
 import NunjucksLinkExtension from './lib/nunjucks/tags/link';
+import imageShortcode from './src/_shortcodes/image';
+
+// Constants.
+const ELEVENTY_IMAGE_DEFAULT_URL_PATH = '/images/';
+
+// Helpers.
+const formatImageFilename = (id, src, width, format /* , options */) => {
+  const filename = basename(src, extname(src));
+  return `${filename}.${width}w.${format}`;
+};
 
 // Exports.
 module.exports = (eleventyConfig) => {
@@ -21,6 +39,19 @@ module.exports = (eleventyConfig) => {
       return joinPath('/', outputPath);
     }
     return eleventyConfig.getFilter('url')(url);
+  });
+
+  // Add utility to perform build-time image manipulation.
+  eleventyConfig.addNunjucksAsyncShortcode('image', async (src, options) => {
+    const urlPath = options?.urlPath || ELEVENTY_IMAGE_DEFAULT_URL_PATH;
+    const stats = await EleventyImage(src, {
+      filenameFormat: formatImageFilename,
+      formats: [extname(src).substring(1)], // Use input format.
+      ...options,
+      outputDir: joinPath(INTERMEDIATE_DIRECTORY, urlPath),
+      urlPath: joinPath('~', INTERMEDIATE_DIRECTORY, urlPath),
+    });
+    return imageShortcode(stats, options);
   });
 
   // Add custom tags.

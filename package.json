@@ -4,7 +4,7 @@
   "description": "Starter kit for using Eleventy with Parcel, backed by Forestry.",
   "author": "Mark van Seventer <mark@vseventer.com>",
   "license": "MIT",
-  "browserslist": "defaults",
+  "browserslist": "last 2 years and > 0.5%, ie 11",
   "homepage": "http://localhost:8080",
   "config": {
     "input": "src/",
@@ -37,11 +37,13 @@
     "start": "run-s watch"
   },
   "dependencies": {
-    "~": "file:.",
+    "@11ty/eleventy-img": "^0.5",
     "postcss-preset-env": "^6.7",
     "postcss-reporter": "^7",
+    "posthtml-render": "^1.4",
     "stylelint": "^13.8",
-    "tailwindcss": "^2"
+    "tailwindcss": "^2",
+    "~": "file:."
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.11",
@@ -60,7 +62,7 @@
     "eslint-plugin-import": "^2.20",
     "npm-run-all": "^4.1",
     "parcel": "^2.0.0-nightly.462",
-    "parcel-namer-custom": "0.1.0-2",
+    "parcel-namer-custom": "^0.2",
     "parcel-optimizer-friendly-urls": "^0.2",
     "parcel-optimizer-imagemin": "^0.1",
     "postcss": "^8.1",
@@ -75,11 +77,15 @@
   "parcel-namer-custom": {
     ".css$": "[folder]/[name].[hash].[type]",
     ".jsx?$": "[folder]/[name].[hash].[type]",
-    ".txt$": "[base]"
+    ".txt$": "[base]",
+    "(tmp/)(.*).(gif|jpe?g|png|svg|webp)$": "[2].[hash].[type]"
   },
   "parcel-optimizer-imagemin": {
     "imagemin-pngquant": {
-      "quality": [0.6, 0.8],
+      "quality": [
+        0.6,
+        0.8
+      ],
       "speed": 1,
       "strip": true
     }
