@@ -67,7 +67,7 @@
     "parcel-optimizer-imagemin": "^1",
     "postcss": "^8.1",
     "rimraf": "^3",
-    "sharp": "^0.26",
+    "sharp": "^0.30",
     "stylelint-config-recommended": "^3",
     "stylelint-no-unsupported-browser-features": "^4.1"
   },
