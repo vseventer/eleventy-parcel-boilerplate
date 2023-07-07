@@ -41,7 +41,7 @@
     "postcss-preset-env": "^6.7",
     "postcss-reporter": "^7",
     "posthtml-render": "^1.4",
-    "stylelint": "^13.8",
+    "stylelint": "^15.10",
     "tailwindcss": "^2",
     "~": "file:."
   },
